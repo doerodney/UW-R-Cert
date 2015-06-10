@@ -1,0 +1,16 @@
+One idea for the project is a statistical process control system for the performance of database stored procedures for a commercial web site.  The goal here is to implement an early warning system if a stored procedure is becoming problematic.
+
+I currently run PowerShell jobs against stored procedures.  I've shown the box plots to you in class.  Typically, I launch about 50 PowerShell jobs that invoke a stored procedure 100 times with different connections, and get the time of execution of the procedure.  The idea is to simulate a typical workload.  Input arguments must be randomized to evade the SQL Server data cache.  These test can occupy over 50% of the available CPU time of a 48 CPU server.  It's pretty impressive to watch run.
+
+Procedure execution times can vary due to many sources of entropy - accretion of data, index fragmentation, database configuration are but a few reasons why these things occasionally go sideways.
+
+This project would be far more applied than academic.  It would mostly be pretty graphics of running means and ranges.  It would, however, provide a vital service and would get R exposure to a very high and wide audience. The CEO of Apex Learning is a math major, and she loves graphs. She already commented on the box plots I used for query performance comparisons.
+
+Please let me know if you need more information.
+
+Another idea for a package is a to create a package out of the mother-of-all cross-validation function I wrote/accumulated over the last two quarters.  I could probably add some graphics to show cross-validation results.
+
+Lastly, Eli mentioned that he was looking for a grad student replacement to do some documentation.  I would be curious to see what Eli does on a daily basis and would be interested in helping out.
+
+Cheers,  
+Rod

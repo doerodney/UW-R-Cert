@@ -1,0 +1,226 @@
+Country,Country2,Area,Literacy,Population,GDP,Water,Birthrate,Continent
+South Sudan,South Su,619745,27,8260490,NA,NA,NA,Africa
+Côte d'Ivoire,Côte d'I,322463,48.7,19738000,1683,1.38,NA,Africa
+Western Sahara,Western ,266000,NA,531000,NA,0,NA,Africa
+East Timor,East Tim,14874,NA,1124000,NA,NA,NA,Asia
+Falkland Islands,Falkland,12173,NA,3000,NA,0,NA,South America
+Palestinian territories,Palestin,6020,93.3,3935249,NA,NA,NA,Asia
+South Georgia and the South Sandwich Islands,South Ge,3903,NA,NA,NA,0,NA,South America
+São Tomé and Príncipe,São Tomé,964,NA,165000,1886,0,NA,NA
+Curaçao,Curaçao,444,NA,142180,NA,0,NA,North America
+Niue,Niue,260,NA,1500,NA,0,NA,Oceania
+Saint Martin,Saint Ma,56,NA,NA,NA,0,NA,North America
+Pitcairn Islands,Pitcairn,47,NA,50,NA,0,NA,Oceania
+Sint Maarten,Sint Maa,34,NA,37429,NA,0,NA,North America
+Saint Barthélemy,Saint Ba,24,NA,NA,NA,NA,NA,North America
+Tokelau,Tokelau,12,NA,1100,NA,0,NA,Oceania
+Vatican City,Vatican ,0,NA,500,NA,0,NA,Europe
+Niger,Niger,1267000,28.7,15730754,761,0.02,50.16,Africa
+Mali,Mali,1240192,26.2,14517176,1272,1.61,49.61,Africa
+Uganda,Uganda,241550,73.3,31800000,1244,18.23,48.12,Africa
+Afghanistan,Afghanis,652090,NA,31412000,909,0,46.21,Asia
+Sierra Leone,Sierra L,71740,38.1,5868000,810,0.17,45.41,Africa
+Burkina Faso,Burkina ,272967,28.7,15730977,1391,0.15,45.28,Africa
+Somalia,Somalia,637657,NA,9331000,NA,1.62,44.6,Africa
+Angola,Angola,1246700,67.4,19082000,5749,0,44.51,Africa
+Liberia,Liberia,111369,NA,3994000,396,13.51,43.75,Africa
+"Congo, Democratic Republic of","Congo, D",2344858,81.1,65966000,329,NA,42.96,Africa
+Yemen,Yemen,527968,58.9,22492035,2606,0,42.67,Asia
+Chad,Chad,1284000,31.8,11227000,1842,1.93,42.35,Africa
+"Congo, Republic of","Congo, R",342000,NA,4043000,4426,NA,42.16,Africa
+Malawi,Malawi,118484,71.8,14901000,821,20.6,42.09,Africa
+Burundi,Burundi,27834,59.3,8383000,412,7.73,41.97,Africa
+Guinea,Guinea,245857,29.5,9982000,1049,0.06,41.53,Africa
+Zambia,Zambia,752612,70.6,13046508,1516,1.23,40.78,Africa
+Mauritania,Mauritan,1025520,55.8,3460000,2110,0,40.56,Africa
+Nigeria,Nigeria,923768,72,158423000,2437,1.41,40.2,Africa
+Rwanda,Rwanda,26338,64.9,10412820,1232,6.34,40.16,Africa
+Djibouti,Djibouti,23200,70.3,889000,2537,0.09,39.07,Africa
+Kenya,Kenya,580367,73.6,38610097,1676,1.93,38.94,Africa
+Madagascar,Madagasc,587041,70.7,20714000,938,0.94,38.6,Africa
+Mozambique,Mozambiq,801590,44.4,20579265,1012,1.63,38.54,Africa
+Benin,Benin,112622,40.5,8778646,1446,1.78,38.1,Africa
+Senegal,Senegal,196722,41.9,12434000,1825,2.13,37.4,Africa
+Ethiopia,Ethiopia,1104300,35.9,82101998,1019,9.44,37.39,Africa
+Togo,Togo,56785,53.2,6028000,863,4.23,36.83,Africa
+Guinea-Bissau,Guinea-B,36125,64.6,1515000,1087,22.16,36.81,Africa
+Comoros,Comoros,2235,75.1,735000,1208,0,36.35,Africa
+Gabon,Gabon,267668,86.2,1505000,15072,3.74,35.96,Africa
+Tanzania,Tanzania,945087,72.3,43187823,1417,6.49,35.95,Africa
+Haiti,Haiti,27750,62.1,10085214,1163,0.68,35.87,North America
+Oman,Oman,309500,81.4,2694094,25492,0,35.76,Asia
+Equatorial Guinea,Equatori,28051,87,700000,18209,0,35.16,Africa
+Cameroon,Cameroon,475442,67.9,19406100,2181,0.57,35.07,Africa
+Laos,Laos,236800,68.7,6230200,2449,2.53,34.98,Asia
+Sudan,Sudan,1861484,60.9,30894000,2380,NA,34.86,Africa
+Maldives,Maldives,300,97,317280,7855,0,34.2,Asia
+Eritrea,Eritrea,117600,67.2,5254000,683,14.12,33.97,Africa
+Central African Republic,Central ,622984,48.6,4401000,747,0,33.52,Africa
+Bhutan,Bhutan,38394,52.8,695822,5510,0,33.28,Asia
+Marshall Islands,Marshall,181,NA,54305,NA,NA,32.37,Oceania
+Iraq,Iraq,435244,NA,31672000,3548,0.22,31.44,Asia
+Kiribati,Kiribati,726,NA,100000,6002,0,30.48,Oceania
+Nepal,Nepal,147181,56.5,28584975,1269,2.6,30.46,Asia
+Ghana,Ghana,238533,65,24233431,2725,4.61,29.85,Africa
+Bangladesh,Banglade,143998,53.5,151371000,1585,9.6,29.36,Asia
+Solomon Islands,Solomon ,28896,76.6,530669,3122,3.15,29.27,Oceania
+Saudi Arabia,Saudi Ar,2149690,85,27136977,22607,0,29.1,Asia
+Guatemala,Guatemal,108889,73.2,14361666,4907,1.59,29.09,North America
+Paraguay,Paraguay,406752,94.6,6230000,5208,2.32,28.77,South America
+Papua New Guinea,Papua Ne,462840,57.8,6703000,2307,2.16,28.76,Oceania
+Belize,Belize,22966,75.1,333200,8080,0.7,28.34,North America
+Samoa,Samoa,2842,98.7,187032,5799,0.35,28.28,Oceania
+Zimbabwe,Zimbabwe,390757,91.2,12571000,436,1,27.72,Africa
+Honduras,Honduras,112492,83.6,8215313,4194,0.18,27.59,North America
+Pakistan,Pakistan,796095,58.2,177405000,2721,3.17,27.52,Asia
+Tajikistan,Tajikist,143100,99.6,6879000,1924,1.81,27.33,Asia
+Syria,Syria,185180,83.1,23695000,5126,0.84,27.19,Asia
+Swaziland,Swazilan,17364,79.6,1186000,5156,0.92,26.98,Africa
+Uzbekistan,Uzbekist,447400,96.9,27445000,3048,4.92,26.46,Asia
+El Salvador,El Salva,21041,82,5744113,7340,1.52,26.13,North America
+Libya,Libya,1759540,86.8,6355000,13846,0,26.09,Asia
+Cambodia,Cambodia,181035,76.3,13395682,2118,2.5,25.53,Asia
+Turkmenistan,Turkmeni,488100,99.5,5042000,6805,3.72,25.36,Asia
+Lesotho,Lesotho,30355,82.2,2171000,1351,0,24.72,Africa
+Philippines,Philippi,300000,93.4,94013200,3920,0.61,24.48,Asia
+Nauru,Nauru,21,NA,10000,NA,0,24.47,Oceania
+Cape Verde,Cape Ver,4033,83.8,491575,3737,0,24.4,Africa
+Nicaragua,Nicaragu,130373,78,5788000,3037,7.96,24.12,North America
+Tonga,Tonga,747,99.2,104000,7297,4.02,23.67,Africa
+Namibia,Namibia,824268,88,2088669,6935,0.12,23.52,Africa
+Botswana,Botswana,582000,82.9,1800098,15180,2.58,23.17,Africa
+Kyrgyzstan,Kyrgyzst,199951,99.3,5362800,2200,4.08,23.08,Asia
+Dominican Republic,Dominica,48671,89.1,9378818,13258,0.72,22.91,North America
+Dominica,Dominica,751,89.1,9378818,13258,0.72,22.91,North America
+Bolivia,Bolivia,1098581,90.7,10426154,4604,1.39,22.82,South America
+India,India,3287263,74.04,1210193422,3408,9.55,22.69,Asia
+Malaysia,Malaysia,330803,91.9,28334135,14744,0.36,22.65,Asia
+Egypt,Egypt,1002000,66.4,80907000,6417,0.6,22.53,Africa
+Tuvalu,Tuvalu,26,NA,10000,NA,0,22.43,Oceania
+Fiji,Fiji,18272,94.4,861000,4481,0,22.37,Oceania
+Vanuatu,Vanuatu,12189,78.1,240000,4765,0,22.35,Oceania
+Kuwait,Kuwait,17818,94.5,3566437,38775,0,21.95,Asia
+Ecuador,Ecuador,256369,91,14306876,7828,2.37,21.91,South America
+Grenada,Grenada,344,96,104000,13110,0,21.87,North America
+American Samoa,American,199,NA,55519,NA,0,21.83,Oceania
+Morocco,Morocco,446550,55.6,32276000,4794,0.06,21.64,Africa
+Turks and Caicos Islands,Turks an,948,NA,40357,NA,0,21.48,North America
+Panama,Panama,75417,93.4,3405813,12615,1.43,21.45,North America
+Venezuela,Venezuel,912050,95.2,29387000,12048,3.29,21.22,South America
+Mongolia,Mongolia,1564100,97.3,2822900,4020,0.68,21.07,Asia
+Cook Islands,Cook Isl,236,NA,24600,NA,0,21,Oceania
+Jordan,Jordan,89342,91.1,6187000,5767,0.6,20.69,Asia
+Jamaica,Jamaica,10991,86,2705827,8745,1.46,20.44,North America
+Mexico,Mexico,1964375,92.8,112336538,14406,1.04,20.36,North America
+Colombia,Colombia,1141748,92.7,46182000,9593,8.8,20.16,South America
+Peru,Peru,1285216,89.6,29461933,9358,0.41,20.09,South America
+Indonesia,Indonesi,1910931,92,237556363,4347,4.88,19.65,Asia
+Saint Lucia,Saint Lu,539,94.8,166526,12507,1.62,19.28,North America
+Northern Mariana Islands,Northern,464,NA,53883,NA,0,19.27,Oceania
+Brunei,Brunei,5765,NA,399000,48333,8.67,18.56,Asia
+Guam,Guam,549,NA,159436,NA,0,18.56,Oceania
+Guyana,Guyana,214969,99,784894,7035,8.43,18.09,South America
+Lebanon,Lebanon,10452,89.6,4228000,15239,1.63,18.08,Asia
+Costa Rica,Costa Ri,51100,95.9,4563538,11043,0.08,18.02,North America
+South Africa,South Af,1221037,88,50586757,10518,0.38,17.94,Africa
+Saint Kitts and Nevis,Saint Ki,261,97.8,52000,16192,0,17.89,North America
+New Caledonia,New Cale,18575,NA,NA,NA,1.62,17.75,Oceania
+Israel,Israel,22072,97.1,7759300,29602,2.12,17.71,Asia
+Palau,Palau,459,NA,20000,NA,0,17.7,Oceania
+Bahrain,Bahrain,758,88.8,1234596,26932,0,17.53,Asia
+Montserrat,Montserr,102,NA,6000,NA,0,17.51,North America
+Azerbaijan,Azerbaij,86600,99.5,9165000,10063,4.59,17.47,Europe
+Suriname,Suriname,163820,90.4,525000,8951,4.77,17.31,South America
+Algeria,Algeria,2381741,75.4,36300000,6966,0,17.11,Africa
+Sri Lanka,Sri Lank,65610,94.2,20653000,5169,1.49,17,Asia
+Vietnam,Vietnam,331212,90.3,87375000,3143,6.38,16.63,Asia
+Antigua and Barbuda,Antigua ,442,99,89000,21460,0,16.62,North America
+Iran,Iran,1648195,82.3,75702000,11883,7.07,16.57,Asia
+Argentina,Argentin,2780400,97.6,40091359,15901,1.57,16.53,South America
+Turkey,Turkey,783562,88.7,73722988,13577,1.78,16.4,Europe
+Brazil,Brazil,8514877,90,190732694,11273,0.65,16.3,South America
+Kazakhstan,Kazakhst,2724900,99.6,16518000,12015,0.92,16.23,Europe
+United Arab Emirates,United A,83600,90,8264070,47439,0,16.09,Asia
+Saint Vincent and the Grenadines,Saint Vi,389,88.1,109000,11542,0,16.02,North America
+Greenland,Greenlan,2166086,NA,56452,NA,NA,16.01,North America
+Seychelles,Seychell,452,91.8,86525,23308,0,15.83,Africa
+Qatar,Qatar,11586,93.1,1696563,88222,0,15.56,Asia
+Tunisia,Tunisia,163610,77.7,10549100,9454,5.04,15.54,Africa
+Mauritius,Mauritiu,1969,87.4,1280925,14194,0.49,15.26,Africa
+Albania,Albania,28748,99.1,3195000,7468,4.7,15.16,Europe
+North Korea,North Ko,120538,99,24052231,NA,0.11,15.06,Asia
+Chile,Chile,756102,96.5,17288400,15040,1.63,15.03,South America
+British Virgin Islands,British ,151,NA,28213,NA,0,14.82,North America
+British Indian Ocean Territory,British ,60,NA,28213,NA,0,14.82,Asia
+Netherlands,Netherla,37354,99,16700300,40973,18.41,14.56,Europe
+Uruguay,Uruguay,176215,97.9,3356584,14339,0.68,14.41,South America
+Ireland,Ireland,70273,99,4581269,39492,1.98,14.4,Europe
+United States,United S,9629091,99,312348000,46860,6.76,14.16,Oceania
+Faroe Islands,Faroe Is,1393,NA,48596,NA,0,14.12,Europe
+Anguilla,Anguilla,91,NA,15236,NA,0,13.97,North America
+Thailand,Thailand,513120,94.1,67041000,9221,0.43,13.73,Asia
+New Zealand,New Zeal,270467,99,4418100,27130,1.65,13.61,Oceania
+Iceland,Iceland,103000,99,318452,36730,2.67,13.57,Europe
+China,China,9640011,95.9,1339724852,7544,0.28,13.45,Asia
+Saint Pierre and Miquelon,Saint Pi,242,NA,NA,NA,0,13.08,North America
+Trinidad and Tobago,Trinidad,5130,98.7,1317714,19743,0,13.07,North America
+France,France,640294,99,65821885,33910,0.52,12.91,Europe
+Aruba,Aruba,180,NA,107000,NA,0,12.83,North America
+Puerto Rico,Puerto R,8870,NA,3725789,NA,NA,12.79,North America
+Barbados,Barbados,430,99.7,273000,22776,0,12.61,North America
+Cayman Islands,Cayman I,264,NA,54878,NA,0,12.6,North America
+Cyprus,Cyprus,9251,97.7,804435,28960,0.11,12.56,Europe
+Armenia,Armenia,29743,99.7,3264500,5100,5.18,12.34,Europe
+Serbia,Serbia,88361,96.4,7306677,10252,0,12.11,Europe
+Montenegro,Monteneg,13812,NA,625266,10775,2.61,12.11,Europe
+Australia,Australi,7692024,99,22722835,39764,0.76,12.02,Oceania
+Macedonia,Macedoni,25713,97,2057284,9868,1.09,12.02,Europe
+"Saint Helena, Ascension and Tristan da Cunha",Saint He,308,NA,4000,NA,0,11.93,Africa
+Luxembourg,Luxembou,2586,99,502100,81466,0,11.84,Europe
+Cuba,Cuba,109884,99.9,11241161,NA,0.94,11.44,North America
+Norway,Norway,323782,99,4972000,51959,6.03,11.27,Europe
+Bermuda,Bermuda,54,NA,64566,NA,0,11.26,North America
+Isle of Man,Isle of ,572,NA,83000,NA,0,10.96,Europe
+Russia,Russia,17098242,99.5,142914136,15612,4.21,10.92,Europe
+Denmark,Denmark,43094,99,5564219,36443,1.53,10.91,Europe
+Moldova,Moldova,33846,NA,3563800,3092,2.84,10.88,Europe
+Canada,Canada,9984670,99,34603000,39171,8.93,10.75,North America
+Gibraltar,Gibralta,6,NA,29441,NA,0,10.69,Europe
+United Kingdom,United K,242900,99,62435709,35059,0.69,10.67,Europe
+Romania,Romania,238391,97.6,21413815,11895,3.57,10.67,Europe
+Slovakia,Slovakia,49037,99,5435273,22195,1.9,10.65,Europe
+Portugal,Portugal,92090,94.9,10636979,23262,0.67,10.59,Europe
+Georgia,Georgia,69700,99.9,4436400,5074,0,10.54,Europe
+Finland,Finland,338424,99,5392110,34918,10.15,10.42,Europe
+Belgium,Belgium,30528,99,10918405,36274,0.82,10.29,Europe
+Malta,Malta,316,92.4,417608,24833,0,10.28,Europe
+Sweden,Sweden,450295,99,9440588,38204,8.87,10.2,Europe
+Estonia,Estonia,45227,99.8,1340122,18527,6.28,10.17,Europe
+Liechtenstein,Liechten,160,NA,36157,NA,0,10.02,Europe
+Spain,Spain,505992,97.9,46125154,29830,1.26,9.98,Europe
+Poland,Poland,312685,99.3,38186860,18981,2.7,9.94,Europe
+South Korea,South Ko,99828,99,48988833,29997,2.81,9.93,Asia
+San Marino,San Mari,61,NA,31887,NA,0,9.89,Europe
+Hungary,Hungary,93028,99.4,9986000,18841,3.68,9.66,Europe
+Switzerland,Switzerl,41277,99,7866500,41950,3.1,9.66,Europe
+Croatia,Croatia,56594,98.7,4290612,17819,1.1,9.63,Europe
+Greece,Greece,131957,97.1,10787690,28496,0.99,9.62,Europe
+Bulgaria,Bulgaria,110879,98.3,7364570,12934,2.16,9.62,Europe
+Belarus,Belarus,207600,99.7,9503807,13874,2.26,9.5,Europe
+Ukraine,Ukraine,603500,99.7,45670036,6698,4.01,9.45,Europe
+Latvia,Latvia,64559,99.8,2218800,14504,3.62,9.43,Europe
+Singapore,Singapor,710,95.9,5076700,56694,1.43,9.17,Asia
+Monaco,Monaco,2,NA,35000,NA,0,9.12,Europe
+Jersey,Jersey,116,NA,92500,NA,0,9.02,Europe
+Slovenia,Slovenia,20273,99.7,2053360,28073,0.6,9,Europe
+Czech Republic,Czech Re,78865,99,10535811,24950,2.05,8.96,Europe
+Lithuania,Lithuani,65300,99.7,3221200,17235,4.01,8.87,Europe
+Bosnia and Herzegovina,Bosnia a,51197,96.7,3843126,7816,0.02,8.8,Europe
+Austria,Austria,83871,99,8404252,39761,1.7,8.69,Europe
+Guernsey,Guernsey,78,NA,62431,NA,0,8.65,Europe
+Macau,Macau,30,NA,556800,NA,0,8.57,Asia
+Italy,Italy,301336,98.9,60626442,29480,2.39,8.54,Europe
+Andorra,Andorra,468,NA,84082,NA,0,8.45,Europe
+Germany,Germany,357114,99,81751602,36081,2.34,8.2,Europe
+Japan,Japan,377930,99,127950000,33885,3.55,8.1,Asia
+Hong Kong,Hong Kon,1104,94.6,7097600,45944,4.53,7.34,Asia

@@ -1,0 +1,18 @@
+interact<-function(Biomass,mlevels,ilevels) {
+ans<-numeric(1000)
+for (j in 1:1000) {
+i<-rep(48,4)
+mx<-sample(mlevels)
+mol1<-rep(mx,i)
+mx<-sample(mlevels)
+mol2<-rep(mx,i)
+mf<-as.factor(c(as.character(mol1),as.character(mol2)))
+ix<-sample(ilevels)
+ins1<-rep(ix,i)
+ix<-sample(ilevels)
+ins2<-rep(ix,i)
+inf<-as.factor(c(as.character(ins1),as.character(ins2)))
+ms<-tapply(Biomass,list(inf,mf),mean)
+ans[j]<-ms[4]-(ms[2]+ms[3]-ms[1])
+}
+ans }

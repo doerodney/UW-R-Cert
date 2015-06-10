@@ -1,0 +1,53 @@
+StatR201 - Winter 2013
+======================
+
+Checklist Aid for Completing HW4
+
+Before you predict the test dataset, it's best if you have this code ready:
+
+*** Pre-processing script or functions, taking a dataset (whether training or test), and:
+
+- Calculates the `gp100m` variable
+- Converts, derives and/or transforms other variables
+- Makes custom model matrix(es) for the Lasso (and PLS if you dare)
+
+-> Important warning: don't make categorical variables with too many levels (e.g., brand names)! You might encounter in the test set, a new brand that the training set hasn't seen!
+
+*** Script for each prediction method's prediction model (could be a single script for all):
+
+- Calculation of the model fit on **all** the training set, using the parameters/models found via CV
+- Storing all these models in a designated workspace.
+- For Lasso predictions using Lasso itself (whether 'glmnet' or 'grpreg'), just store the value of the chosen 'lambda' penalty.
+- For Lasso predictions using 'lm' on the Lasso-chosen variables, more work is needed:
+1. store a vector with the variable names. Then do something like
+2. tmpframe=as.data.frame(Xmat[,lassvarnames])
+3. tmpframe$y=autos$gp100m
+4. myFakeLassModel=lm(y~.,data=tmpframe).  This is the model you want to store.
+
+- For 'step' and constrained-subsets, this is more straightforward. The model formula should be available to you from the output.
+- Just run each of the chosen models via 'lm', and store the produced objects.
+
+*** functions for prediction scoring and visualization
+- in the file 'cvEngine.r', there are functions for RMSE and all the rest
+- For observed vs. predicted, this is just a simple 'plot', but it might be nice to wrap it together with 'abline' for the diagonal error boundaries, xlab and ylab, etc. Not a must, though
+
+*** Script for prediction, scoring, visualization
+- This can be a master script that loads the data, sources the files above,...
+- ... then predicts model after model, scores them and produces the scores in tabular form.
+- And saves everything in a new workspace, just in case.
+- For 'glmnet', the 'predict' method calls the new model matrix 'newx', and the specific penalty value 's'.
+- For 'grpreg', it is 'X' and 'lambda'.
+- For 'lm', it is 'newdata', which (unlike the Lasso) should be a data frame.
+
+- For using 'lm' to predict the Lasso-chosen variable outside of Lasso, do
+- predict(myFakeLassModel,newdata=as.data.frame(newXmat[,lassvarnames]).
+
+
+**** GOOD LUCK! ***** Feel free to Q&A
+
+
+
+
+
+
+

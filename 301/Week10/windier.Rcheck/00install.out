@@ -1,0 +1,14 @@
+* installing *source* package 'windier' ...
+** R
+** data
+** preparing package for lazy loading
+** help
+Warning: C:/Users/Rod/SkyDrive/R/301/Week10/windier/man/windier-package.Rd:33: All text must be in a section
+Warning: C:/Users/Rod/SkyDrive/R/301/Week10/windier/man/windier-package.Rd:34: All text must be in a section
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+*** arch - i386
+*** arch - x64
+
+* DONE (windier)

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js.gz"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="section slide level1" id="section">
+
+<div align="center">
+<img src="figure/blank.png" />
+<pre><code><h1><b>UWEO StatR301 Lecture 2</b></h1></code></pre>
+<pre><code><h1><b>Introduction to Bayesian Statistics</b></h1></code></pre>
+<pre><code><h2>Assaf Oron, April 2013    </h2></code></pre>
+<div class="figure">
+<img src="figure/bgstrip.png" /><p class="caption"></p>
+</div>
+</div>
+
+
+</div>
+<div class="section slide level1" id="springs-menu">
+<h1>Spring’s Menu</h1>
+<ul class="incremental">
+<li><font color='blue'><strong>StatR101</strong></font> was a well-rounded foundation for both statistics and R.</li>
+<li><font color='red'><strong>StatR201</strong></font> waded into the real world of statistical modeling, increasingly focusing on predictive models. R code took a back seat, with many exercises involving writing of wrapper-type functions to packaged modeling tools. We did place some emphasis on graphics and data manipulation.</li>
+<li>IMHO, we have covered from the stat side the two must-have skillsets for an applied statistics certificate: the basic principles and the foundations of modeling.</li>
+<li>So for <font color='blue'><strong>StatR301</strong></font>, there is really no single critical statistical “lump” to teach. Instead, this will be a special-topics class.</li>
+<li>It also enables us to bring programming back to the fore… a challenge for all of us (have I said I’m not a programmer?)</li>
+</ul>
+<p>From the stats side, the biggest special-topics chunks will be</p>
+<ol class="incremental" style="list-style-type: decimal">
+<li>Bayesian methods</li>
+<li>Spatial and Temporal modeling</li>
+</ol>
+<p>We will also cover numerical inference (done!), mixed models, splines/GAM (hopefully!)…</p>
+<p>From the programming side, package authoring is definitely on the menu, as well as some delving into the language’s structure.</p>
+</div>
+<div class="section slide level1" id="tonights-menu">
+<h1>Tonight’s Menu</h1>
+<p>We begin a 2(+?)-week crash course in <font color='blue'><strong>Bayesian statistics.</strong></font> Tonight will be mostly theoretical, while next week (both lab and lecture) we will tackle the more computational topics. Things we’ll cover tonight:</p>
+<ul class="incremental">
+<li>The Bayesian Basics (we got a head-start in lab)</li>
+<li>Estimation and Loss functions</li>
+<li>Priors: Conjugate and Improper and Other</li>
+<li>Tons of conceptu-philosophizing.</li>
+</ul>
+<p>I think that our cool R trick of the week might be <font color='blue'><strong>using <code>optim</code> and <code>uniroot</code> for general optimization or root-finding.</strong></font></p>
+</div>
+<div class="section slide level1" id="from-bayes-rule-to-bayesian-modeling">
+<h1>From Bayes’ Rule to Bayesian Modeling</h1>
+<p>Bayes’ Rule is a simple (and <strong>old</strong>) mathematical theorem, resulting directly from the basic definitions and properties of probability. Here it is again:</p>
+<p>\[\Pr\left(A \mid B\right) = \frac{\Pr\left(A \ \&amp;\  B\right)}{\Pr(B)} = \frac{\Pr(A)\Pr\left(B \mid A\right)}{\Pr(B)}  \]</p>
+<p>with \(A,B\) random events. The exact same formulation also holds for densities (or probabilities) or random variables:</p>
+<p>\[f \left(y \mid x\right) = \frac{f \left(x,y\right)}{f(x)} = \frac{f(y)f\left(x \mid y\right)}{f(x)}  .\]</p>
+<p>Notes:</p>
+<ul class="incremental">
+<li>I nonchalantly used \(f(\cdot)\) everywhere above, to ease the notation. However, it is not the same \(f\) everywhere:</li>
+<li>\(f(x),f(y)\) are the <font color='blue'><strong>marginal</strong></font> densities of the r.v.’s \(X,Y\) respectively.</li>
+<li>\(f \left(y \mid x\right)\) is the <font color='blue'><strong>conditional</strong></font> density of \(Y\) given knowledge that \(X=x\).</li>
+<li>Finally, \(f(x,y)\) is the <font color='blue'><strong>joint</strong></font> density of \(X\) and \(Y\), when observed “together” as random.</li>
+<li>If \(X\) or \(Y\) are discrete, the density \(f\) can be seamlessly interchanged with \(\Pr\left(X=x\right)\), etc.</li>
+<li><font color='red'><strong>This is still just math. No special assumptions. The gateway into Bayesian world is crossed,when \(y\) in the equation above is replaced by the parameters \(\theta\) that govern \(X\)’s distribution,</strong></font> like so:</li>
+</ul>
+</div>
+<div class="section slide level1" id="from-bayes-rule-to-bayesian-modeling-1">
+<h1>From Bayes’ Rule to Bayesian Modeling</h1>
+<p>\[ \] \[\pi \left(\theta \mid x\right) = \frac{\pi(\theta)f\left(x \mid \theta \right)}{f(x)}  .\] \[ \]</p>
+<p>The distribution of \(\theta\) is usually represented via the greek letter \(\pi\).</p>
+<p>Bayes’ theorem is usually written in a manner that emphasizes <font color='blue'><strong>“the flip”</strong></font>, i.e., the trick turning \(f(x|y)\) into \(f(y|x)\) and vice versa. Similarly, the most eye-catching aspect of Bayesian modeling is this very same flip, implying a symmetry between:</p>
+<ul class="incremental">
+<li>The data \(x\), which are very real and tangible (or could be, or would be); and</li>
+<li>The parameters \(\theta\), which are usually – just like the model itself – a figment of our imagination.</li>
+</ul>
+<p><font color='red'><strong>Think about it for a moment.</strong></font> Then take note, that careful Bayesian do <strong>Not</strong> claim there is a symmetry. (to be revisited later)</p>
+</div>
+<div class="section slide level1" id="bayesian-modeling-as-a-learningupdating-process">
+<h1>Bayesian Modeling as a Learning/Updating Process</h1>
+<p>However, it is arguably more useful to view the equation this way:</p>
+<p>\[ \] \[\pi \left(\theta \mid x\right) = \pi(\theta)\frac{f\left(x \mid \theta \right)}{f(x)}.\] \[ \]</p>
+<p>\(\pi(\theta)\) is our <em>“innocent”</em> view of the parameters, prior to any knowledge of the data. <font color='blue'><strong>Indeed, that’s how it is called: The Prior.</strong></font></p>
+<p>\(\pi(\theta \mid x)\) is our <em>updated</em> view of the parameters, after observing the data. <font color='blue'><strong>It is called The Posterior.</strong></font></p>
+<p>Our learning from the data, is entirely captured by the way in which the prior turns into the posterior. And if we get more data, we just plug the posterior as the new prior and repeat the process (as done during Tuesday’s lab).</p>
+<p><font color='red'><strong>What about \(f\left(x \mid \theta \right)\)? You already know it and you know its name. Can you recognize it?</strong></font></p>
+</div>
+<div class="section slide level1" id="bayesian-modeling-as-a-learningupdating-process-1">
+<h1>Bayesian Modeling as a Learning/Updating Process</h1>
+<p>In most situations, Bayesian modeling has little interest in the data <em>per se</em>; the data are already “dead.” Its main use for the data is to update our knowledge about the behind-the-scene process approximated via \(f\) and \(\theta\).</p>
+<p>But w.r.t. \(\theta\), the RHS denominator \(f(x)\) is <font color='red'><strong>just a normalizing constant.</strong></font> So the Bayesian modeling equation can be simplified even further:</p>
+<p>\[ \] \[\pi\left(\theta \mid x\right)\  \ \propto \ \ \pi(\theta)f\left(x \mid \theta\right).\] \[ \]</p>
+<p>This is the standard Bayesian view of Bayes’ rule.</p>
+<p><em>By pure coincidence, \(f(x)\) is also usually the messiest and costliest part of the equation to calculate – if anyone bothered to calculate it.</em></p>
+<p><font color='blue'>Questions? <em>Online</em> questions?</font></p>
+</div>
+<div class="section slide level1" id="bayesian-modeling-as-a-context-inducing-tool">
+<h1>Bayesian Modeling As a Context-Inducing Tool</h1>
+<p>Ok, let’s do an example. Suppose we flip a coin 4 times and it lands <em>“Heads”</em> in all 4 cases.</p>
+<p><font color='blue'><strong>What is the frequentist (=“classical”) MLE for the “Heads” probability \(p\)?</strong></font> <font color='red'><strong>Does it make sense?</strong></font></p>
+<p>Suppose also that we get to touch and see the coin, and it clearly has a <em>“Heads”</em> side and a <em>“Tails”</em> side.</p>
+<p>How would Bayesian modeling help us? By placing a realistic prior on \(p\). For reasons that will become obvious to you in 5 minutes, the most common prior for these binary-outcome models is <strong>Beta:</strong></p>
+<p>\[ \pi\left(\theta\mid\alpha ,\beta\right)\propto\theta^{\alpha-1}(1-\theta)^{\beta-1},\ \theta\in(0,1),\ \alpha,\beta&gt;0.\]</p>
+<p>Notes:</p>
+<ul class="incremental">
+<li>This proportionality thing is magic, ain’t it? Saves us some messy constants in the distribution formula above.<br /></li>
+<li><font color='blue'><strong>Can you recognize the case \(\alpha=\beta=1\)? It has a simpler name.</strong></font></li>
+</ul>
+<p><font color='red'><strong>Ok, your exercise: calculate and identify the posterior in this simple case. Then we’ll do some numerical play with the outcome, to see how it affect our little coin-flippin’ story.</strong></font></p>
+</div>
+<div class="section slide level1" id="bayesian-parameter-estimation">
+<h1>Bayesian Parameter Estimation</h1>
+<p>The coin story is a great example for how a Bayesian prior can be used as a “babysitter” or “check and balance” to make sure small-sample results are sensible. However it wasn’t just a quantitative difference, but also a <em>qualitative</em> one:</p>
+<ul class="incremental">
+<li>With the MLE we get a single number, \(\hat{p}\) (plus a confidence-interval if we must, except that with an all-<em>“Heads”</em> outcome there is no CI really).</li>
+<li>With Bayesian modeling, we get a <strong>posterior distribution</strong> of \(p\).</li>
+</ul>
+<p>But very often we <em>do</em> want a single number to serve as “The” point estimate.</p>
+<p>Since Baysian modeling sends the parameters onto the familiar turf of probability distributions, the common solutions are taken from there:</p>
+<ul class="incremental">
+<li><font color='blue'><strong>The posterior mean</strong></font> (or formally, expectation \(E\left[\theta\mid x\right]\)) - the performance analogue to the MLE;</li>
+<li>The posterior median, a less-precise, more-robust alternative;</li>
+<li><font color='blue'><strong>The posterior mode</strong></font> which, mathematically, competes with the mean for the title of “true” analogue to the MLE <em>(think about it!)</em>.</li>
+</ul>
+<p><font color='red'><strong>Back to the coins: find the generic posterior mean and mode for \(p\), as a function of \(\left(x,n,\alpha,\beta\right)\).</strong></font></p>
+</div>
+<div class="section slide level1" id="bayesian-modeling-as-averaging-or-hedging">
+<h1>Bayesian Modeling as Averaging or Hedging</h1>
+<p>As we saw, the eventual Bayesian \(\hat{p}\) is a weighted average of the frequentist MLE and the prior mean. Who will dominate? This depends upon</p>
+<ul class="incremental">
+<li>How different they are (no conflict if they happen to agree, right?)</li>
+<li>The prior’s relative weight, usually counted as a sample-size equivalent.</li>
+</ul>
+<p>This brings us to a key Bayesian insight: <font color='blue'><strong>in many (perhaps even most) cases, your model will be only as good as your prior.</strong></font></p>
+<p>But we’ve glossed over an even bigger issue.</p>
+<p><font color='red'><strong>Under the frequentist paradigm, \(\hat{p}\) is the MLE – a choice justified by solid theory. What is the theoretical Bayesian analogue, that will give us the right or justification to choose the posterior mean (or mode/median/etc.) over other estimates?</strong></font></p>
+</div>
+<div class="section slide level1" id="bayesian-parameter-estimation-lossutility">
+<h1>Bayesian Parameter Estimation: Loss/Utility</h1>
+<p>Formally, the Bayesian approach includes a broader definition of estimation. It starts by defining a <font color='red'><strong>Loss function</strong></font> \(L\left(\hat{\theta},\theta_0\right)\)(or its diametric opposite, a <strong>utility</strong>). \(L\) quantifies the cost of our estimate \(\hat{\theta}\) missing the true value \(\theta_0\).</p>
+<p><font color='red'><strong>Not confused yet? You should be.</strong></font> Didn’t we say \(\theta\) is now random? What’s this talk about a <em>“true value”</em>?</p>
+<p>Well, despite \(\theta\) being random, if the model is correct then the data \(x\) were indeed conditional upon <em>some</em> value(s) of \(\theta\) when they were observed. These are the true values; we just don’t have certain knowledge of them, and never will. In that sense, the Loss-function perspective seals Bayesian estimation as a <font color='blue'><strong>Subjective Probability</strong></font> approach.</p>
+<p>The expected posterior loss \(R(\hat{\theta})=\int L\left(\hat{\theta},\theta\right)\pi\left(\theta \mid x\right)d\theta,\) is known as <font color='red'><strong>the posterior risk. The Bayes point estimate of \(\theta\) is the value that minimizes it.</strong></font></p>
+<p>With these new concepts and lofty ideals, what is the most commonly used Bayesian Loss? <strong>The MSE, which leads to the… posterior mean (expectation) as the point estimator.</strong></p>
+<p>As you might guess, an absolute-error loss leads to the posterior median. The posterior mode is associated with an “all-or-nothing” 0-1 loss.</p>
+<p>…But in principle, you <em>could</em> implement any loss (monetary loss, public-health cost, etc.), then integrate it over \(\theta\) and minimize the outcome to obtain an estimate.</p>
+</div>
+<div class="section slide level1" id="bayesian-intervals-and-hypothesis-testing">
+<h1>Bayesian Intervals and Hypothesis Testing</h1>
+<p>On the other hand, calculating a p-value for some Bayesian hypothesis now becomes a piece of cake! <font color='blue'><strong>Find out the Bayesian p-value for the fair-coin hypothesis \(p=0.5\), under the priors we’ve tried.</strong></font> <em>How would you do that?</em></p>
+<p>How about an interval for \(p\)? Well, it is just a stretch that takes up the required percentage of the posterior. Say…..\(95\%\). Bayesians calls these <font color='blue'><strong>Credible Intervals.</strong></font> Catchy, and ends up with the same acronym.</p>
+<p><font color='red'><strong>Yes, but there isn’t a single choice - rather, a continuum of choice. Which one to pick?</strong></font></p>
+<p>The obvious answer would be a symmetric interval around \(50\%\). It is a valid choice, touted in the Dobson and Barnett book. But in fact, a more popular choice is <font color='blue'><strong>the narrowest possible interval.</strong></font> What would that be?</p>
+<p>It turns out that there is a simple and elegant solution. Can you find it? (Hint: this is a math/visual problem, it has nothing to do with Bayesian tricks)</p>
+<p>[Hint #2: the solution only holds for <strong>unimodal</strong> densities]</p>
+<p>Now that we’ve found it, let’s try to code it in R, using <code>optim</code> and <code>uniroot</code>. I guess these functions, esp. <code>optim</code>, are our <em>“cool R trick of the day.”</em> Actually, it is more like a workhorse for many model-fitting functions.</p>
+</div>
+<div class="section slide level1" id="time-out-some-conceptphilosophy-points">
+<h1>Time-Out: Some Concept/Philosophy Points</h1>
+<p>Now that we’ve dipped our tippy-toes into shallow Bayesian waters, it’s a good time to examine some conceptual motivations or selling points for Bayesian modeling.</p>
+<ul class="incremental">
+<li>It guards against unrealistic inference, especially for small samples;</li>
+<li>It enables us to see the parameters as random, which is often a more accurate description of their nature <em>(can you think of examples for either case?)</em>. Some would say that Bayesian modeling is a more loyal depiction of the way we view and learn the world.</li>
+<li>That, in turn (as the Dobson-Barnett book puts front and center), allows for a more direct and honest description of p-values, CIs and hypotheses.</li>
+<li><strong>Perhaps the most common formally-heard motive:</strong> it allows us to incorporate existing scientific/other knowledge in a judicious manner (from my semi-meagre experience, this is actually very often a source for royal headaches, rather than an advantage ;)</li>
+<li><font color='blue'><strong>More attractively, it enables seeing models and hypotheses as random and uncertain,</strong></font> rather than as fixed God-given entities with deterministic properties.</li>
+<li>It also allows inference between models, even if they are not formally nested. More generally, it provides some interesting and elegant solution to the model-selection problem.</li>
+<li>It enables the construction of complicated models, for which there is no frequentist estimation method.</li>
+</ul>
+</div>
+<div class="section slide level1" id="so-are-data-and-parametersmodels-symmetric-now">
+<h1>So… are Data and Parameters/Models Symmetric Now?</h1>
+<p>The original Bayes’ rule would suggest so, but the usual Bayesian shorthand for it – as well as actual use and language (see e.g., Dobson’s textbook) would suggest otherwise. Let us examine more closely.</p>
+<ul class="incremental">
+<li>In a frequentist framework, the data are random (“generated” via model/parameters), while the model/parameters are <font color='red'><strong>fixed, but often not known.</strong></font></li>
+<li>In a Bayesian framework, parameters’ randomness emanates from our “subjective probability”, while the data are randomly generated from the parameters but treated as a <em>faix accomplix</em>.</li>
+</ul>
+<p>That is not all. The data’s marginal distribution \(f(x)\) is discarded as a nuisance. It is of no interest, and can be easily(?) found by integrating over all allowed \(\theta\) values.</p>
+<p>On the other hand, we don’t even call \(\pi(\theta)\) a marginal distribution; rather, it is the <strong>prior</strong> and it is set by hand. To make matters worse, the prior has its own parameters - and these are fixed <strong>and</strong> known. (Alternately, the prior can have its own prior, and so forth - but it cannot be <em>“Tortoises all the way Down”</em>).</p>
+</div>
+<div class="section slide level1" id="priors-conjugate-improper-and-plain-hard">
+<h1>Priors: Conjugate, Improper and Plain Hard</h1>
+<p>This brings us back to the coin example. It was a lucky coincidence that the structure of the Beta prior perfectly matched the Bernoulli/Binomial form of the likelihood.</p>
+<p>Or was it? Of course not. <font color='blue'><strong>The Beta and Binomial are known as Conjugate distributions.</strong></font> Formally, two distributions \(\pi(\cdot),f(\cdot)\) are conjugate, if putting them into the Bayesian template produces a prior and posterior from the same family.</p>
+<p>Other famous conjugates:</p>
+<ul class="incremental">
+<li>The Beta is also conjugal with the Geometric and Negative-Binomial</li>
+<li>Poisson and Gamma</li>
+<li>Gamma also conjugates… itself</li>
+<li>Normal and…. Normal (for the mean \(\mu\))</li>
+<li>Normal and Gamma! For the <strong>Precision</strong> parameter, which is simply the inverse of variance (and the favorite of Bayesian modelers, possibly due to the above conjugation)</li>
+</ul>
+<p><a href="http://www.johndcook.com/conjugate_prior_diagram.html">Here’s a nice diagram of it all, and a bit more</a></p>
+</div>
+<div class="section slide level1" id="priors-conjugate-improper-and-plain-hard-1">
+<h1>Priors: Conjugate, Improper and Plain Hard</h1>
+<p><font color='red'><strong>What if \(\pi(\theta),f(x)\) are not conjugate?</strong></font></p>
+<p>Interestingly, for many forms of \(f(x)\) it is possible to craft <font color='red'><strong>a \(\pi(\theta)\) that is not a real probability density - but results in a posterior \(\pi\left(\theta\mid x \right)\) that is a distribution. These so-called “Improper Priors” are quite controversial.</strong></font></p>
+<p>Why do people use them? Because they often represent zero prior information, and thus an almost-exact Bayesian analogue to frequentist inference. The most famous of these is the “flat” prior for the two Normal parameters, \(\pi(\mu,\sigma^2)=1/\sigma^2\). The posterior for \(\mu\) becomes a \(t\) distribution!</p>
+<p>One obvious caveat is that improper priors when carelessly used, might lead to a “posterior” that is not really a distribution at all.</p>
+<p><font color='blue'><strong>Fortunately, due to Bayes’ rule: if we use a proper prior (i.e., a real probability distribution) we are guaranteed that the posterior is always a valid distribution.</strong></font> However, in general it is not a named closed-form one.</p>
+</div>
+<div class="section slide level1" id="and-now-the-hard-obtaining-the-posterior-numerically">
+<h1>And Now, the Hard: Obtaining the Posterior Numerically</h1>
+<p>If the posterior has no closed form, we can still approximate it numerically. Easiest way:</p>
+<blockquote  style="float:left;width: 50%;font-style: normal">
+
+
+<pre class="sourceCode r"><code class="sourceCode r">pvec=<span class="kw">seq</span>(<span class="dv">1</span>/<span class="dv">1001</span>,<span class="dv">1000</span>/<span class="dv">1001</span>,<span class="dv">1</span>/<span class="dv">1001</span>) ### equally-spaced theta vector
+priorvec=<span class="kw">dbeta</span>(pvec,<span class="dv">3</span>,<span class="dv">3</span>)  ### prior density
+posteriorvec=priorvec*pvec^<span class="dv">4</span>  ### posterior ~ prior*likelihood
+posteriorvec=<span class="dv">1000</span>*posteriorvec/<span class="kw">sum</span>(posteriorvec) <span class="co"># Normalizing </span>
+<span class="kw">plot</span>(pvec,posteriorvec,<span class="dt">main=</span><span class="st">&quot;4 Coin Posterior, Numerically&quot;</span>,
+     <span class="dt">xlab=</span><span class="st">&#39;p&#39;</span>,<span class="dt">ylab=</span><span class="st">&#39;Posterior Density&#39;</span>)
+<span class="kw">lines</span>(pvec,<span class="kw">dbeta</span>(pvec,<span class="dv">7</span>,<span class="dv">3</span>),<span class="dt">col=</span><span class="dv">2</span>)</code></pre>
+<img src="figure/c2integrate.png" title="plot of chunk c2integrate" alt="plot of chunk c2integrate" width="500px" height="500px" />
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">weighted.mean</span>(pvec,<span class="dt">w=</span>posteriorvec)  ### Posterior mean</code></pre>
+<pre><code>## [1] 0.7</code></pre>
+</blockquote>
+
+<blockquote  style="float:right;width: 30%;font-style: normal">
+
+<p>This is just (approximate) <font color='blue'><strong>numerical integration.</strong></font> You can calculate any posterior statistic by (carefully) using this method. For infinite domains, one can use the standard function <code>integrate</code> - or stop where the remaining tail becomes negligible.</p>
+<p><font color='red'><strong>However, beyond 2-3 parameters, integration (whether approximate or formal) becomes too computationally demanding. Instead, sampling methods are used – to be shown next week.</strong></font></p>
+<font color='blue'><strong>In-class exercise: find the posterior mean, assuming a uniform prior between 1/3 and 2/3. That is: complete disbelief in the possibility of the coin being biased more than 2:1, but little certainty about where it might fall in between.</strong></font>
+</blockquote>
+
+
+
+</div>
+</body>
+</html>

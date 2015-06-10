@@ -1,0 +1,74 @@
+
+R version 2.15.1 (2012-06-22) -- "Roasted Marshmallows"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: i386-pc-mingw32/i386 (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "windier"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> options(pager = "console")
+> library('windier')
+> 
+> assign(".oldSearch", search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("Stations")
+> ### * Stations
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: Stations
+> ### Title: Stations
+> ### Aliases: Stations
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> data(Stations)
+> head(Stations)
+  Station Latitude Longitude
+1   41001 34.56111 -72.63056
+2   41002 31.86167 -74.83500
+3   41004 32.50056 -79.09944
+4   41008 31.40000 -80.86806
+5   41009 28.52278 -80.18417
+6   41010 28.90611 -78.47111
+> 
+> 
+> 
+> cleanEx()
+> nameEx("loadBuoyData")
+> ### * loadBuoyData
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: loadBuoyData
+> ### Title: loadBuoyData
+> ### Aliases: loadBuoyData
+> ### Keywords: ~kwd1 ~kwd2
+> 
+> ### ** Examples
+> 
+> ##---- Should be DIRECTLY executable !! ----
+> ##-- ==>  Define data, use random,
+> ##--	or do  help(data=index)  for the standard data sets.
+> loadBuoyData(46067)  # A buoy in the Gulf of Alaska
+Warning in file(file, "rt") :
+  cannot open: HTTP status was '404 Not Found'
+Error in file(file, "rt") : cannot open the connection
+Calls: loadBuoyData -> read.table -> file
+Execution halted

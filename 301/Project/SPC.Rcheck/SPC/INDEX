@@ -1,0 +1,13 @@
+SPC-package             SPC - Implements a Statistical Process Control
+                        (SPC) chart ~~ package title ~~
+classifyByWesternElectricRuleZones
+                        classifyByWesternElectricRuleZones
+classifyByWesternElectricRuleZones.numeric
+                        classifyByWesternElectricRuleZones.numeric
+findWesternElectricRuleViolations
+                        findWesternElectricRuleViolations
+logWesternElectricRuleViolation
+                        logWesternElectricRuleViolation
+plotSpcChart            plotSpcChart
+spcSampleData           spcSampleData - example of data produced by
+                        plotSpcData

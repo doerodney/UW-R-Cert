@@ -1,0 +1,17 @@
+C <- read.csv("Country.csv")
+aggregate(C$Birthrate, list(C$Continent), Skew)
+boxplot(Birthrate~Continent, data=C, main="Birthrate")
+boxplot(Birthrate~Continent, data=C, varwidth=TRUE, col="grey")
+text(1:6, 80000, paste("n =", tapply(C$Birthrate, C$Continent, length)), cex=1.5)
+
+C <- read.csv("Country.csv")
+aggregate(C$Birthrate, list(C$Continent), Skew)
+boxplot(Birthrate~Continent, data=C, main="Birthrate")
+boxplot(Birthrate~Continent, data=C, varwidth=TRUE, col="grey")
+text(1:6, 80000, paste("n =", tapply(C$Birthrate, C$Continent, length)), cex=1.5)
+
+C <- read.csv("Country.csv")
+aggregate(C$Birthrate, list(C$Continent), Skew)
+boxplot(Birthrate~Continent, data=C, main="Birthrate")
+boxplot(Birthrate~Continent, data=C, varwidth=TRUE, col="grey")
+text(1:6, 80000, paste("n =", tapply(C$Birthrate, C$Continent, length)), cex=1.5)

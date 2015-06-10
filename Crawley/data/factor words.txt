@@ -1,0 +1,4 @@
+factor	B
+one	2
+two words	3
+three words here	4

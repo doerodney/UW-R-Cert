@@ -1,0 +1,25 @@
+Notes from guest lecture:
+dput() to crete sample data to use with StackOverflow questions.
+
+browser() to stop a function and open a browser.
+
+Slidify() is a package to create slides out of R code.
+
+devtools, brew, plyr are by Hadley Wickham
+
+ggplot
+
+data.table
+
+lubridate 
+
+stringr
+
+testthat
+
+#===Eli's Lecture==============================================================
+Kalman Filtering in R
+
+The Kalman filter is an algorithm that optiimally estimates a linear, 
+stochastic process (with optional control) that is observed with noise.
+

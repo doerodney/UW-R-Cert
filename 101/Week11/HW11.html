@@ -1,0 +1,1331 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>StatR 101: Homework 11</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</head>
+
+<body>
+<h1>StatR 101: Homework 11</h1>
+
+<h3>Eliezer Gurarie</h3>
+
+<h3>Due: Wednesday, December 12, 2012</h3>
+
+<p><strong>Instructions:</strong>  Please submit a single document with all the R code, short answers and figures. Upload the completed homework assignment into the course webpage drop-box.  The homework follows Lab 11 closely. Don&#39;t hesitate to discuss the problems amongst yourselves on the forum.   </p>
+
+<p>In this assignment, we will thoroughly analyze a portion of Anderson iris data which we&#39;ve looked at in the past in the class. Recall that the iris data consists of observations of three species of iris (<em>Iris setosa</em>, <em>Iris versicolor</em> and <em>Iris virginica</em>).  The length and width of petals and sepals.  Here, we will look at the relationship between sepal length and sepal width.  </p>
+
+<!-- Table generated in R 2.15.0 by googleVis 0.2.15 package -->
+
+<!-- Tue Dec 04 16:37:20 2012 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript" src="http://www.google.com/jsapi">
+</script>
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataTableID1d3434352649 ()
+{
+  var data = new google.visualization.DataTable();
+  var datajson =
+[
+ [
+         5.1,
+        3.5,
+        1.4,
+        0.2,
+"setosa" 
+],
+[
+         4.9,
+          3,
+        1.4,
+        0.2,
+"setosa" 
+],
+[
+         4.7,
+        3.2,
+        1.3,
+        0.2,
+"setosa" 
+],
+[
+         4.6,
+        3.1,
+        1.5,
+        0.2,
+"setosa" 
+],
+[
+           5,
+        3.6,
+        1.4,
+        0.2,
+"setosa" 
+],
+[
+         5.4,
+        3.9,
+        1.7,
+        0.4,
+"setosa" 
+],
+[
+         4.6,
+        3.4,
+        1.4,
+        0.3,
+"setosa" 
+],
+[
+           5,
+        3.4,
+        1.5,
+        0.2,
+"setosa" 
+],
+[
+         4.4,
+        2.9,
+        1.4,
+        0.2,
+"setosa" 
+],
+[
+         4.9,
+        3.1,
+        1.5,
+        0.1,
+"setosa" 
+],
+[
+         5.4,
+        3.7,
+        1.5,
+        0.2,
+"setosa" 
+],
+[
+         4.8,
+        3.4,
+        1.6,
+        0.2,
+"setosa" 
+],
+[
+         4.8,
+          3,
+        1.4,
+        0.1,
+"setosa" 
+],
+[
+         4.3,
+          3,
+        1.1,
+        0.1,
+"setosa" 
+],
+[
+         5.8,
+          4,
+        1.2,
+        0.2,
+"setosa" 
+],
+[
+         5.7,
+        4.4,
+        1.5,
+        0.4,
+"setosa" 
+],
+[
+         5.4,
+        3.9,
+        1.3,
+        0.4,
+"setosa" 
+],
+[
+         5.1,
+        3.5,
+        1.4,
+        0.3,
+"setosa" 
+],
+[
+         5.7,
+        3.8,
+        1.7,
+        0.3,
+"setosa" 
+],
+[
+         5.1,
+        3.8,
+        1.5,
+        0.3,
+"setosa" 
+],
+[
+         5.4,
+        3.4,
+        1.7,
+        0.2,
+"setosa" 
+],
+[
+         5.1,
+        3.7,
+        1.5,
+        0.4,
+"setosa" 
+],
+[
+         4.6,
+        3.6,
+          1,
+        0.2,
+"setosa" 
+],
+[
+         5.1,
+        3.3,
+        1.7,
+        0.5,
+"setosa" 
+],
+[
+         4.8,
+        3.4,
+        1.9,
+        0.2,
+"setosa" 
+],
+[
+           5,
+          3,
+        1.6,
+        0.2,
+"setosa" 
+],
+[
+           5,
+        3.4,
+        1.6,
+        0.4,
+"setosa" 
+],
+[
+         5.2,
+        3.5,
+        1.5,
+        0.2,
+"setosa" 
+],
+[
+         5.2,
+        3.4,
+        1.4,
+        0.2,
+"setosa" 
+],
+[
+         4.7,
+        3.2,
+        1.6,
+        0.2,
+"setosa" 
+],
+[
+         4.8,
+        3.1,
+        1.6,
+        0.2,
+"setosa" 
+],
+[
+         5.4,
+        3.4,
+        1.5,
+        0.4,
+"setosa" 
+],
+[
+         5.2,
+        4.1,
+        1.5,
+        0.1,
+"setosa" 
+],
+[
+         5.5,
+        4.2,
+        1.4,
+        0.2,
+"setosa" 
+],
+[
+         4.9,
+        3.1,
+        1.5,
+        0.2,
+"setosa" 
+],
+[
+           5,
+        3.2,
+        1.2,
+        0.2,
+"setosa" 
+],
+[
+         5.5,
+        3.5,
+        1.3,
+        0.2,
+"setosa" 
+],
+[
+         4.9,
+        3.6,
+        1.4,
+        0.1,
+"setosa" 
+],
+[
+         4.4,
+          3,
+        1.3,
+        0.2,
+"setosa" 
+],
+[
+         5.1,
+        3.4,
+        1.5,
+        0.2,
+"setosa" 
+],
+[
+           5,
+        3.5,
+        1.3,
+        0.3,
+"setosa" 
+],
+[
+         4.5,
+        2.3,
+        1.3,
+        0.3,
+"setosa" 
+],
+[
+         4.4,
+        3.2,
+        1.3,
+        0.2,
+"setosa" 
+],
+[
+           5,
+        3.5,
+        1.6,
+        0.6,
+"setosa" 
+],
+[
+         5.1,
+        3.8,
+        1.9,
+        0.4,
+"setosa" 
+],
+[
+         4.8,
+          3,
+        1.4,
+        0.3,
+"setosa" 
+],
+[
+         5.1,
+        3.8,
+        1.6,
+        0.2,
+"setosa" 
+],
+[
+         4.6,
+        3.2,
+        1.4,
+        0.2,
+"setosa" 
+],
+[
+         5.3,
+        3.7,
+        1.5,
+        0.2,
+"setosa" 
+],
+[
+           5,
+        3.3,
+        1.4,
+        0.2,
+"setosa" 
+],
+[
+           7,
+        3.2,
+        4.7,
+        1.4,
+"versicolor" 
+],
+[
+         6.4,
+        3.2,
+        4.5,
+        1.5,
+"versicolor" 
+],
+[
+         6.9,
+        3.1,
+        4.9,
+        1.5,
+"versicolor" 
+],
+[
+         5.5,
+        2.3,
+          4,
+        1.3,
+"versicolor" 
+],
+[
+         6.5,
+        2.8,
+        4.6,
+        1.5,
+"versicolor" 
+],
+[
+         5.7,
+        2.8,
+        4.5,
+        1.3,
+"versicolor" 
+],
+[
+         6.3,
+        3.3,
+        4.7,
+        1.6,
+"versicolor" 
+],
+[
+         4.9,
+        2.4,
+        3.3,
+          1,
+"versicolor" 
+],
+[
+         6.6,
+        2.9,
+        4.6,
+        1.3,
+"versicolor" 
+],
+[
+         5.2,
+        2.7,
+        3.9,
+        1.4,
+"versicolor" 
+],
+[
+           5,
+          2,
+        3.5,
+          1,
+"versicolor" 
+],
+[
+         5.9,
+          3,
+        4.2,
+        1.5,
+"versicolor" 
+],
+[
+           6,
+        2.2,
+          4,
+          1,
+"versicolor" 
+],
+[
+         6.1,
+        2.9,
+        4.7,
+        1.4,
+"versicolor" 
+],
+[
+         5.6,
+        2.9,
+        3.6,
+        1.3,
+"versicolor" 
+],
+[
+         6.7,
+        3.1,
+        4.4,
+        1.4,
+"versicolor" 
+],
+[
+         5.6,
+          3,
+        4.5,
+        1.5,
+"versicolor" 
+],
+[
+         5.8,
+        2.7,
+        4.1,
+          1,
+"versicolor" 
+],
+[
+         6.2,
+        2.2,
+        4.5,
+        1.5,
+"versicolor" 
+],
+[
+         5.6,
+        2.5,
+        3.9,
+        1.1,
+"versicolor" 
+],
+[
+         5.9,
+        3.2,
+        4.8,
+        1.8,
+"versicolor" 
+],
+[
+         6.1,
+        2.8,
+          4,
+        1.3,
+"versicolor" 
+],
+[
+         6.3,
+        2.5,
+        4.9,
+        1.5,
+"versicolor" 
+],
+[
+         6.1,
+        2.8,
+        4.7,
+        1.2,
+"versicolor" 
+],
+[
+         6.4,
+        2.9,
+        4.3,
+        1.3,
+"versicolor" 
+],
+[
+         6.6,
+          3,
+        4.4,
+        1.4,
+"versicolor" 
+],
+[
+         6.8,
+        2.8,
+        4.8,
+        1.4,
+"versicolor" 
+],
+[
+         6.7,
+          3,
+          5,
+        1.7,
+"versicolor" 
+],
+[
+           6,
+        2.9,
+        4.5,
+        1.5,
+"versicolor" 
+],
+[
+         5.7,
+        2.6,
+        3.5,
+          1,
+"versicolor" 
+],
+[
+         5.5,
+        2.4,
+        3.8,
+        1.1,
+"versicolor" 
+],
+[
+         5.5,
+        2.4,
+        3.7,
+          1,
+"versicolor" 
+],
+[
+         5.8,
+        2.7,
+        3.9,
+        1.2,
+"versicolor" 
+],
+[
+           6,
+        2.7,
+        5.1,
+        1.6,
+"versicolor" 
+],
+[
+         5.4,
+          3,
+        4.5,
+        1.5,
+"versicolor" 
+],
+[
+           6,
+        3.4,
+        4.5,
+        1.6,
+"versicolor" 
+],
+[
+         6.7,
+        3.1,
+        4.7,
+        1.5,
+"versicolor" 
+],
+[
+         6.3,
+        2.3,
+        4.4,
+        1.3,
+"versicolor" 
+],
+[
+         5.6,
+          3,
+        4.1,
+        1.3,
+"versicolor" 
+],
+[
+         5.5,
+        2.5,
+          4,
+        1.3,
+"versicolor" 
+],
+[
+         5.5,
+        2.6,
+        4.4,
+        1.2,
+"versicolor" 
+],
+[
+         6.1,
+          3,
+        4.6,
+        1.4,
+"versicolor" 
+],
+[
+         5.8,
+        2.6,
+          4,
+        1.2,
+"versicolor" 
+],
+[
+           5,
+        2.3,
+        3.3,
+          1,
+"versicolor" 
+],
+[
+         5.6,
+        2.7,
+        4.2,
+        1.3,
+"versicolor" 
+],
+[
+         5.7,
+          3,
+        4.2,
+        1.2,
+"versicolor" 
+],
+[
+         5.7,
+        2.9,
+        4.2,
+        1.3,
+"versicolor" 
+],
+[
+         6.2,
+        2.9,
+        4.3,
+        1.3,
+"versicolor" 
+],
+[
+         5.1,
+        2.5,
+          3,
+        1.1,
+"versicolor" 
+],
+[
+         5.7,
+        2.8,
+        4.1,
+        1.3,
+"versicolor" 
+],
+[
+         6.3,
+        3.3,
+          6,
+        2.5,
+"virginica" 
+],
+[
+         5.8,
+        2.7,
+        5.1,
+        1.9,
+"virginica" 
+],
+[
+         7.1,
+          3,
+        5.9,
+        2.1,
+"virginica" 
+],
+[
+         6.3,
+        2.9,
+        5.6,
+        1.8,
+"virginica" 
+],
+[
+         6.5,
+          3,
+        5.8,
+        2.2,
+"virginica" 
+],
+[
+         7.6,
+          3,
+        6.6,
+        2.1,
+"virginica" 
+],
+[
+         4.9,
+        2.5,
+        4.5,
+        1.7,
+"virginica" 
+],
+[
+         7.3,
+        2.9,
+        6.3,
+        1.8,
+"virginica" 
+],
+[
+         6.7,
+        2.5,
+        5.8,
+        1.8,
+"virginica" 
+],
+[
+         7.2,
+        3.6,
+        6.1,
+        2.5,
+"virginica" 
+],
+[
+         6.5,
+        3.2,
+        5.1,
+          2,
+"virginica" 
+],
+[
+         6.4,
+        2.7,
+        5.3,
+        1.9,
+"virginica" 
+],
+[
+         6.8,
+          3,
+        5.5,
+        2.1,
+"virginica" 
+],
+[
+         5.7,
+        2.5,
+          5,
+          2,
+"virginica" 
+],
+[
+         5.8,
+        2.8,
+        5.1,
+        2.4,
+"virginica" 
+],
+[
+         6.4,
+        3.2,
+        5.3,
+        2.3,
+"virginica" 
+],
+[
+         6.5,
+          3,
+        5.5,
+        1.8,
+"virginica" 
+],
+[
+         7.7,
+        3.8,
+        6.7,
+        2.2,
+"virginica" 
+],
+[
+         7.7,
+        2.6,
+        6.9,
+        2.3,
+"virginica" 
+],
+[
+           6,
+        2.2,
+          5,
+        1.5,
+"virginica" 
+],
+[
+         6.9,
+        3.2,
+        5.7,
+        2.3,
+"virginica" 
+],
+[
+         5.6,
+        2.8,
+        4.9,
+          2,
+"virginica" 
+],
+[
+         7.7,
+        2.8,
+        6.7,
+          2,
+"virginica" 
+],
+[
+         6.3,
+        2.7,
+        4.9,
+        1.8,
+"virginica" 
+],
+[
+         6.7,
+        3.3,
+        5.7,
+        2.1,
+"virginica" 
+],
+[
+         7.2,
+        3.2,
+          6,
+        1.8,
+"virginica" 
+],
+[
+         6.2,
+        2.8,
+        4.8,
+        1.8,
+"virginica" 
+],
+[
+         6.1,
+          3,
+        4.9,
+        1.8,
+"virginica" 
+],
+[
+         6.4,
+        2.8,
+        5.6,
+        2.1,
+"virginica" 
+],
+[
+         7.2,
+          3,
+        5.8,
+        1.6,
+"virginica" 
+],
+[
+         7.4,
+        2.8,
+        6.1,
+        1.9,
+"virginica" 
+],
+[
+         7.9,
+        3.8,
+        6.4,
+          2,
+"virginica" 
+],
+[
+         6.4,
+        2.8,
+        5.6,
+        2.2,
+"virginica" 
+],
+[
+         6.3,
+        2.8,
+        5.1,
+        1.5,
+"virginica" 
+],
+[
+         6.1,
+        2.6,
+        5.6,
+        1.4,
+"virginica" 
+],
+[
+         7.7,
+          3,
+        6.1,
+        2.3,
+"virginica" 
+],
+[
+         6.3,
+        3.4,
+        5.6,
+        2.4,
+"virginica" 
+],
+[
+         6.4,
+        3.1,
+        5.5,
+        1.8,
+"virginica" 
+],
+[
+           6,
+          3,
+        4.8,
+        1.8,
+"virginica" 
+],
+[
+         6.9,
+        3.1,
+        5.4,
+        2.1,
+"virginica" 
+],
+[
+         6.7,
+        3.1,
+        5.6,
+        2.4,
+"virginica" 
+],
+[
+         6.9,
+        3.1,
+        5.1,
+        2.3,
+"virginica" 
+],
+[
+         5.8,
+        2.7,
+        5.1,
+        1.9,
+"virginica" 
+],
+[
+         6.8,
+        3.2,
+        5.9,
+        2.3,
+"virginica" 
+],
+[
+         6.7,
+        3.3,
+        5.7,
+        2.5,
+"virginica" 
+],
+[
+         6.7,
+          3,
+        5.2,
+        2.3,
+"virginica" 
+],
+[
+         6.3,
+        2.5,
+          5,
+        1.9,
+"virginica" 
+],
+[
+         6.5,
+          3,
+        5.2,
+          2,
+"virginica" 
+],
+[
+         6.2,
+        3.4,
+        5.4,
+        2.3,
+"virginica" 
+],
+[
+         5.9,
+          3,
+        5.1,
+        1.8,
+"virginica" 
+] 
+];
+data.addColumn('number','Sepal.Length');
+data.addColumn('number','Sepal.Width');
+data.addColumn('number','Petal.Length');
+data.addColumn('number','Petal.Width');
+data.addColumn('string','Species');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartTableID1d3434352649() {
+  var data = gvisDataTableID1d3434352649();
+  var options = {};
+options["allowHtml"] = true;
+options["height"] =    300;
+
+     var chart = new google.visualization.Table(
+       document.getElementById('TableID1d3434352649')
+     );
+     chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart 
+function displayChartTableID1d3434352649()
+{
+  google.load("visualization", "1", { packages:["table"] }); 
+  google.setOnLoadCallback(drawChartTableID1d3434352649);
+}
+ 
+// jsChart 
+displayChartTableID1d3434352649()
+ 
+<!-- jsFooter -->  
+//-->
+</script>
+ 
+
+<!-- divChart -->
+
+<div id="TableID1d3434352649"
+  style="width: 600px; height: 300px;">
+</div>
+
+<h3>1) Regression</h3>
+
+<p>Model the sepal length (<em>Y</em>) with respect to sepal width (<em>X</em>) using a linear regression of the form: 
+\[ 
+M1: Y_i = \alpha + \beta X_i + \epsilon_i
+ \]
+where \( i \in (1,2,...N) \) is the index of each observation and \( \epsilon_i \) are i.i.d. random variables with distribution \( {\cal N}(0,\sigma^2) \).  Follow these steps:</p>
+
+<p><em>a)</em> Plot the sepal length against sepal width. </p>
+
+<p><em>b)</em> Fit a regression model, creating an object called (for example) <code>Iris.lm1</code>, and report the estimates for \( \alpha \), \( \beta \) and \( \sigma \) in your model. Illustrate this regression by adding a line to your plot. </p>
+
+<p><em>c)</em> Assess using diagnostic plots whether the assumptions of i.i.d. normally distributed  \( \epsilon \) are valid.  </p>
+
+<p><em>d)</em> Test via ANOVA the hypothesis that there is a significant relationship between the two variables.  Identify the hypothesis you are testing with respect to the parameters defined above, report the ANOVA table and the <em>p</em>-value, and conclude whether there is a relationship between the two based on the results of the ANOVA.</p>
+
+<h3>2) One-Way ANOVA</h3>
+
+<p>Now, propose a new model the sepal length (<em>Y</em>), as a function of the discrete species factor (<em>A</em>):
+\[ 
+M2: Y_{ij} = \mu_i + \epsilon_{ij}
+ \]
+where \( i \in (1,2,3) \) represents each of the three species, \( j \in (1,2, ... 50) \)  represents the replicates of each species, and \( \epsilon_i \) are i.i.d. \( {\cal N}(0,\sigma^2) \) random variables.</p>
+
+<p><em>a)</em> Plot the sepal length against species with a boxplot. </p>
+
+<p><em>b)</em> Produce a summary table of means and standard deviations for each species. </p>
+
+<p><em>c)</em> Fit a linear model of sepal length with respect to species. </p>
+
+<p><em>d)</em> Assess whether the assumptions of i.i.d. normally distributed  \( \epsilon \) are valid using diagnostic plots. </p>
+
+<p><em>e)</em> Test via ANOVA the hypothesis that there is a significant relationship between these variables.  Identify the hypothesis you are testing with respect to the parameters defined above, report the ANOVA table and <em>p</em>-value, and conclude whether there is a relationship between the two.</p>
+
+<h3>3) Two-Way ANOVA (aka ANCOVA)</h3>
+
+<p>Let us propose two models that include both main effects and interaction effects.  </p>
+
+<p>\[  M3: Y_{ij} = \alpha_i + \beta X_{ij} + \epsilon_{ij} \]
+\[  M4: Y_{ij} = \alpha_i + \beta_i X_{ij} + \epsilon_{ij} \]</p>
+
+<p>Where \( \alpha_i \) represents a unique intercept for each species \( i \) and \( \beta_i \) (in M4) represents a unique slope for each species \( i \).  </p>
+
+<p><em>a)</em> How many parameters are needed to specify each of these two models?  Name them.</p>
+
+<p><em>b)</em> Fit both of these models (creating, e.g., objects <code>Iris.lm3</code> and <code>Iris.lm4</code>), and report the values of all the parameter estimates.</p>
+
+<p><em>c)</em> Illustrate both of these models using color-coded regression lines superposed on a scatter plot.</p>
+
+<p><em>d)</em> Use an ANOVA table to compare these models.  What hypothesis are you testing in making this comparison?  What model best explains the observed variation in sepal length? </p>
+
+<h3>Bonus Problem</h3>
+
+<p>Perform the analysis in problem 3 on sepal width against sepal length.  Is there a difference in your conclusions and the results?  Can you explain it?  </p>
+
+</body>
+
+</html>
+

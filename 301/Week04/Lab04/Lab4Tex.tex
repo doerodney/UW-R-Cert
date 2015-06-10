@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage{hyperref,amsmath}
+\newcommand{\R} {\texttt{R\ }}
+\newcommand{\tex}{\LaTeX \   }
+\begin{document}
+
+\title{\tex \  Equation Syntax}
+\author{Assaf Oron}
+\maketitle
+
+\section{Background and Strengths}
+
+\tex is a packaging, enhancement and interface to \TeX, a mathematically-savvy document preparation system. Both had existed before Microsoft Word, but have been largely confined to academic circles in math-related fields.
+
+\tex is essentially a \textbf{markup language} - like, e.g., HTML. Its primary strengths:
+
+\begin{enumerate}
+	\item \textbf{Equation editing and typesetting.} This was the main reason I deserted Word (for methods-article work) in 2005 : it just couldn't do what I needed from it. It cannot do \emph{everything} -- but pretty nearly so.
+	\item \textbf{Leanness, stability and reproducibility.} Except for figure files, all you ever need to retain is your source file (and if your figure is produced via \R, you need only the R code; see below).  \tex and \TeX \ are both open-source and extremely stable by intent. In fact, \TeX \ inventor Don Knuth instructed the version numbers to converge to $\pi$ -- with Version $\pi$ to be released after his death, \href{http://en.wikipedia.org/wiki/TeX}{\emph{``at which point all remaining bugs will become features''}}.
+	\item \textbf{A great compatible citation-markup system.} It is called BibTeX. You won't have to worry about licenses and version upgrades for your bibliographic list again, and you can export its content to EndNote etc. as XML.
+	\item \textbf{Produce documents that are professional-looking with self-consistent formatting rules, even if you are not particularly talented in these respects.} Of course, if you use, e.g. MS Word, and don't change any formatting (who does that?), you \emph{might} get a reasonably self-consistently formatted document. But \tex is a different league in that respect.
+	\item \textbf{Being free, open-source and crowd-sourced, there is great help available online, as well as new developments arising from needs of people like you.} This community support not quite as amazing as the \R one, but it's good enough. 
+	\item \textbf{Nowadays, you can also make great \tex - based presentations using the \texttt{beamer} package.} This is how Eli has been making his beautiful lecture notes.
+	\item \textbf{Last but not least, \R and \tex are increasingly integrated for report production.} 
+		\begin{itemize}
+			\item The \texttt{Sweave} command is available in \texttt{base R}. It compiles \texttt{.Rnw} files -- these are \tex documents with additional markup, to allow the embedding of \R code chunks and expressions. The output is a \tex document with all figures, tables, etc. already produced and embedded. All \R package vignettes, and most \R instruction books, were produced this way.
+			\item More recently, the \texttt{knitr R} package provides an easier-to-work-with version of \texttt{Sweave} (according to users), and also a method to produce HTML documents via the same methodology -- which is precisely what I've been tormenting you with my own far-less-beautiful lecture notes. Further more, the HTML version as well allows you to use \tex equation syntax.
+	\end{itemize}
+	Eli and I would like you to learn these integrated document-production tools; but first you should learn to write \tex equations.
+ \end{enumerate}
+
+
+\section{Let's Go Write some Equations Online...}
+
+\url{http://latex.informatik.uni-halle.de/latex-online/latex.php}
+
+
+%\bibliographystyle{plain}
+%\bibliography{Rbib}
+\end{document}

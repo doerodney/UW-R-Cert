@@ -1,0 +1,10 @@
+Package: SPC
+Type: Package
+Title: Statistical Process Control (SPC) Chart Package
+Version: 1.0
+Date: 2013-06-15
+Author: Rod Doe
+Maintainer: Rod Doe <doerodney@gmail.com>
+Description: Classifies batch average and batch range data according to Western Electric rules.  Plots data to indicate classifications.
+License: Fishing license
+Built: R 3.0.1; ; 2013-06-16 00:10:00 UTC; windows

@@ -1,0 +1,18 @@
+Q1:
+Probability theory and statistical inference
+Linear modeling and ANOVA
+Project:  Exploration factors that contribute to home field advantage in Major League Soccer
+
+Q2:
+Regression, model selection, prediction
+Classification, K Nearest Neighbors
+Machine learning, cross-validation
+Non-linear models
+R package creation
+Project:  Search for evidence of gender bias in university staff salaries
+
+Q3:
+Bayesian theory
+Markov chains and stochastic modeling
+Time series and spatial modeling
+Project:  Statistical Process Control (SPC) implementation.  Used to monitor database stored procedure performance.

@@ -1,0 +1,91 @@
+* using log directory 'C:/Users/Rod/SkyDrive/R/301/Week10/windier.Rcheck'
+* using R version 2.15.1 (2012-06-22)
+* using platform: i386-pc-mingw32 (32-bit)
+* using session charset: ISO8859-1
+* checking for file 'windier/DESCRIPTION' ... OK
+* checking extension type ... Package
+* this is package 'windier' version '1.0'
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for .dll and .exe files ... OK
+* checking whether package 'windier' can be installed ... WARNING
+Found the following significant warnings:
+  Warning: C:/Users/Rod/SkyDrive/R/301/Week10/windier/man/windier-package.Rd:33: All text must be in a section
+  Warning: C:/Users/Rod/SkyDrive/R/301/Week10/windier/man/windier-package.Rd:34: All text must be in a section
+See 'C:/Users/Rod/SkyDrive/R/301/Week10/windier.Rcheck/00install.out' for details.
+* checking package directory ... OK
+* checking for portable file names ... OK
+* checking DESCRIPTION meta-information ... WARNING
+Non-standard license specification:
+  What license is it under?
+Standardizable: FALSE
+* checking top-level files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking for unstated dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+loadBuoyData: warning in read.table(url, skip = 1, header = TRUE,
+  comment = "*"): partial argument match of 'comment' to 'comment.char'
+plotMap: no visible binding for global variable 'Stations'
+plotMap: no visible global function definition for 'map'
+* checking Rd files ... WARNING
+prepare_Rd: Stations.Rd:19-21: Dropping empty section \details
+prepare_Rd: Stations.Rd:22-24: Dropping empty section \source
+prepare_Rd: Stations.Rd:25-27: Dropping empty section \references
+prepare_Rd: loadBuoyData.Rd:19-21: Dropping empty section \details
+prepare_Rd: loadBuoyData.Rd:22-28: Dropping empty section \value
+prepare_Rd: loadBuoyData.Rd:35-37: Dropping empty section \note
+prepare_Rd: loadBuoyData.Rd:32-34: Dropping empty section \author
+prepare_Rd: loadBuoyData.Rd:29-31: Dropping empty section \references
+prepare_Rd: loadBuoyData.Rd:41-43: Dropping empty section \seealso
+prepare_Rd: plotMap.Rd:40-42: Dropping empty section \details
+prepare_Rd: plotMap.Rd:43-49: Dropping empty section \value
+prepare_Rd: plotMap.Rd:56-58: Dropping empty section \note
+prepare_Rd: plotMap.Rd:53-55: Dropping empty section \author
+prepare_Rd: plotMap.Rd:50-52: Dropping empty section \references
+prepare_Rd: plotMap.Rd:62-64: Dropping empty section \seealso
+prepare_Rd: windier-package.Rd:33: All text must be in a section
+prepare_Rd: windier-package.Rd:34: All text must be in a section
+* checking Rd metadata ... OK
+* checking Rd cross-references ... WARNING
+Unknown package(s) '<pkg>' in Rd xrefs
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking contents of 'data' directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking examples ... ERROR
+Running examples in 'windier-Ex.R' failed
+The error most likely occurred in:
+
+> ### Name: loadBuoyData
+> ### Title: loadBuoyData
+> ### Aliases: loadBuoyData
+> ### Keywords: ~kwd1 ~kwd2
+> 
+> ### ** Examples
+> 
+> ##---- Should be DIRECTLY executable !! ----
+> ##-- ==>  Define data, use random,
+> ##--	or do  help(data=index)  for the standard data sets.
+> loadBuoyData(46067)  # A buoy in the Gulf of Alaska
+Warning in file(file, "rt") :
+  cannot open: HTTP status was '404 Not Found'
+Error in file(file, "rt") : cannot open the connection
+Calls: loadBuoyData -> read.table -> file
+Execution halted

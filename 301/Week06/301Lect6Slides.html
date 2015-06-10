@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js.gz"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="section slide level1" id="section">
+
+<div align="center">
+<img src="figure/blank.png" />
+<pre><code><h1><b>UWEO StatR301 Lecture 6</b></h1></code></pre>
+<pre><code><h1><b>Package Building Basics</b></h1></code></pre>
+<pre><code><h2>Assaf Oron, May 2013    </h2></code></pre>
+<div class="figure">
+<img src="figure/bgstrip.png" /><p class="caption"></p>
+</div>
+</div>
+
+
+</div>
+<div class="section slide level1" id="call-for-final-projects-a-repeat">
+<h1>Call for Final Projects (a repeat)</h1>
+<p>The “official” final project suggests doing some package authorship.</p>
+<ul class="incremental">
+<li>This is <strong>Not</strong> (necessarily) a package for public use. Private packages are often useful to have around.</li>
+<li>If you spotted some contribution you wanted to make to a true CRAN package, doing it (including contacting authors, etc.) would definitely count.</li>
+<li>But also, <font color='blue'><strong>I would like to open the field for any worthy final-project idea you might have. Hit us with it!</strong></font></li>
+<li>You can also do a project paired up with a partner from class (again, given the idea is worthy)</li>
+</ul>
+</div>
+<div class="section slide level1" id="why-packages">
+<h1>Why Packages?</h1>
+<p>After having used dozens of important packages, surely there is no question about their value for us as R-using analysts.</p>
+<p><font color='red'><strong>My question is, as R programmers and developers – why bother paying the additional overhead and complications associated with building and maintaining a package?</strong></font></p>
+<p>What is wrong about just keeping source files with functions – like we’ve been doing so far, and like (AFAIK) languages such as C do?</p>
+</div>
+<div class="section slide level1" id="setting-up-a-package-structure-via-package.skeleton">
+<h1>Setting Up a Package Structure via <code>package.skeleton()</code></h1>
+<p>On Tuesday we walked through package setup using the quicker, easier Rstudio-assisted point-n-click way. Today we do it the pedestrian way.</p>
+<p>As you will see, much of the Rstudio “magic”&quot; is really already provided directly by R utilities, first and foremost the <code>package.skeleton()</code> function, which creates the basic directory tree and files.</p>
+</div>
+<div class="section slide level1" id="package-components-code-and-help-files">
+<h1>Package Components: Code and Help Files</h1>
+<p>The R code files are grouped under the <code>R</code> directory. Then, for each function <code>package.skeleton</code> creates a mirror help file with an <code>Rd</code> extension.</p>
+<p>It also creates a generic help file for the entire package. <strong>This file is optional</strong> – if you have nothing general to say to the world about your package (beyond its short-form description to be described below), you can just delete it; nothing will happen.</p>
+<p>As to code files, the compiler might later find some errors - and you probably need to test-run the package to make sure it works properly before unleashing it on the outside world. One thing I’ve noticed, is that nowadays the compiler doesn’t care anymore whether you specify assignment via <code>&lt;-</code> or <code>=</code> (or does it? give it a try).</p>
+<p><code>Rd</code> is a custom “baby LaTeX” format. Indeed, the reason you needed to download LaTeX is to enable compilation of help files into PDF.</p>
+<p>Let’s look into some such files:</p>
+</div>
+<div class="section slide level1" id="package-components-description-and-versioning">
+<h1>Package Components: Description and Versioning</h1>
+<p>The <code>DESCRIPTION</code> file is mostly self-explanatory. An important part is <strong>“Depends:” and “Imports:”</strong></p>
+<p>They tell us what is the oldest R version the package can run on, plus what packages (and optionally versions) must be available in order for it to run properly. When you install your package, those package will be automatically installed as well.</p>
+<p>“Imports” indicates a more intimate and back-end relationship between your package and the imported one. It will place the imported package “above”&quot; the search path, so to speak. <font color='red'><strong>But functions from the imported package will not be directly available to users, unless they load it separately.</strong></font></p>
+<p>“Depends” is equivalent to loading the package into the search path using <code>library()</code>. Which means that, if a package with an identically named function your package depends on happened to be loaded earlier (or if you inadvertently create a variable by the same name) – you might be in trouble.</p>
+<p>In short, in different contexts, one of these dependency types might be right and the other wrong – but generally, it seems that “Imports” is safer if you use some other package a lot in your package.</p>
+<p>With version numbers, the informal convention is to start with 0.x rather than 1.x. The latter signifies a fully mature package.</p>
+</div>
+<div class="section slide level1" id="package-components-namespace">
+<h1>Package Components: Namespace</h1>
+<p>My (non-programmer) understanding of namespace, is that it tell the package what names (usually of functions, but also of other objects) it can share with the outside world, and also what internal names of other packages it can see.</p>
+<p>If you write a simple package, you might not need here anything but the default (which exports all the function names). But some packages…</p>
+</div>
+<div class="section slide level1" id="package-components-other-optional">
+<h1>Package Components: Other (optional)</h1>
+<ul class="incremental">
+<li>The <code>src</code> directory is where code from languages such as C/C++ will be located</li>
+<li>The <code>doc</code> directory contains <strong>vignettes:</strong> tutorials on how to use the package. They are written using a platform that blends formatted text and code chunks. Originally this was <code>Sweave</code> that compiles into LaTeX: <font color='blue'><strong>Starting R 3.0, <code>knitr</code> is accepted as well.</strong></font> (as you know, that’s the format I use to build these presentations, it’s much easier to use than LaTeX).</li>
+</ul>
+</div>
+<div class="section slide level1" id="compiling-and-checking-the-package">
+<h1>Compiling and Checking the Package</h1>
+<p>On Tuesday we used the Rstudio point-n-click interface for this.</p>
+<p>Actually, it is better to know and become proficient with the command-line sequence that this interface calls.</p>
+<p>In order to make it work in Windows, you must make sure that the path to the Rtools and R binaries (=executables) is included in the Windows universal search path list.</p>
+<p>To do this, go to Control Panel -&gt; System -&gt; Advanced System Options -&gt; Environment Variables. Then look for the <strong>Path</strong> entry in the bottom window, then click ‘Edit…’.</p>
+<p>Add the paths to the binaries themselves (these will be “{Rtools path}” and “{path to R.x.y}”). You should be good to go.</p>
+<p>For Mac, as usual… I’m not sure, you might not need to do anything.</p>
+</div>
+<div class="section slide level1" id="compiling-and-checking-r-cmd-build">
+<h1>Compiling and Checking: <code>R CMD build</code></h1>
+<p>The compile-check-install sequence is a 3 command sequence, starting with</p>
+<p><strong><code>R CMD build {pkgpath}</code></strong></p>
+<p>The <code>{pkgpath}</code> argument is the path to the root directory created by <code>package.skeleton()</code>.</p>
+<p>This command makes some basic sanity checks, then creates the <strong>tarball</strong> enabling the package’s provisional installation for the next step.</p>
+<p><font color='red'><strong>Note that <code>R CMD build</code> is NOT what the Rstudio “Build and Reload” button does. Rather, the latter does a version of <code>R CMD INSTALL</code>.</strong></font></p>
+</div>
+<div class="section slide level1" id="compiling-and-checking-r-cmd-check">
+<h1>Compiling and Checking: <code>R CMD check</code></h1>
+<p>The next step,</p>
+<p><strong><code>R CMD check {pkgpath}</code></strong></p>
+<p>is typically the longest and hardest to pass. It checks that (partial list)</p>
+<ul class="incremental">
+<li>There are no syntax errors in code, help, description and namespace files;</li>
+<li>All the package dependencies pan out;</li>
+<li>All the help links pan out;</li>
+<li>The function arguments in help files match the ones in code files;</li>
+<li>The examples in help files run properly;</li>
+<li>The help files properly compile into a PDF file;</li>
+<li>(if relevant) The vignette compiles properly into a PDF file;</li>
+<li>and on and on.</li>
+</ul>
+</div>
+<div class="section slide level1" id="installing-r-cmd-install">
+<h1>Installing: <code>R CMD INSTALL</code></h1>
+<p>After we cleared the checks,</p>
+<p><strong><code>R CMD INSTALL {pkgpath}</code></strong></p>
+<p>will install the package into the <code>library</code> subdirectory of the R tree indicated by your “Path” variable. <font color='blue'><strong>The effect is identical to that of running <code>install.packages()</code> on the R console</strong></font> (except that at the R console, you can’t do it directly from source files – at least not in the traditional build/check/INSTALL sequence described here).</p>
+<p>The target library can be changed via the option <code>--library=&lt;otherlib&gt;</code>.</p>
+<p>If at this point, you want to create a zip or tarball file to share your package with friends or haul it around, run <code>R CMD INSTALL</code> with the option <code>--build</code>. It will create both (zip and tarball).</p>
+<p>Ok… now your turn.</p>
+</div>
+<div class="section slide level1" id="some-recent-developments-in-package-building-roxygen2">
+<h1>Some Recent Developments in Package Building: <code>roxygen2</code></h1>
+<p>This process is quite tedious and involves a lot of overhead. One way to cut into the overhead, is to generate the entire <code>Rd</code> file from the function code. After all, we tend to document our functions in their body anyway, right? So doing it just a bit more methodically can enable us to get all the help (text) we need.</p>
+<p>This is what the <code>roxygenise</code> in <code>roxygen2</code>, is all about. It is patterned after <strong>Doxygen</strong> – an existing generic documentation generation tool.</p>
+<p>The savings are quite immense: <font color='blue'><strong>no more need for an <code>Rd</code> source file at all! The file, and eventually the help page, will be compiled on the fly from the in-situ comments.</strong></font></p>
+<p>I don’t think I will teach <code>roxygenise</code> tonight; in fact, have never used it ;) But let’s look at an example. As you will notice in that file, the code examples are still kept in a separate file. But it’s just a straight-up R script.</p>
+</div>
+<div class="section slide level1" id="some-recent-developments-in-package-building-devtools-and-testthat">
+<h1>Some Recent Developments in Package Building: <code>devtools</code> and <code>testthat</code></h1>
+<p>Guess who is heavily involved (and currently maintains) <code>roxygen2</code>? Well, Hadley Wickham has even more goodies for us in <code>devtools</code>, which actually enable doing the entire build-check-install sequence via simple commands from inside R.</p>
+<p>As it currently stands, you must first have all your help written in <code>roxygenize</code> format in order to use <code>devtools</code>. At least that is the formal disclaimer. But feel free to try it if you dare…</p>
+<p>Wickham also wrote <code>testthat</code>, a package for automatic background testing inspired by a similar functionality in Ruby (on Rails?). I have no idea how to use that yet, but there are a few among you whose main day job is test coding – you’ll probably know how to use it better than myself.</p>
+</div>
+</body>
+</html>

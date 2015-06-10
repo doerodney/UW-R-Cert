@@ -1,0 +1,75 @@
+\documentclass{article}
+
+\begin{document}
+
+\LaTeX \ equations are easy to write, and usually self-explanatory. An inline equation starts and ends with a \$. Like this: $y=f(x)$.
+
+Display equations need a double \$\$, like this:
+
+$$ y=x^2 $$
+
+See if you can find how to do "$x$ is square root of $y$" as a display equation?
+
+Here it is (thanks Bao!), and here's the more standard way to write display equations:
+
+\begin{equation}
+x = \sqrt{y}
+\end{equation}
+
+Another one:  summation and subscripts
+
+\begin{equation}
+x = \sum_i z_i
+\end{equation}
+
+Try to change that to "$x=$ sum of $z$ from $i=1$ to $n$".
+
+\begin{equation}
+x = \sum_{i=1}^n z_i
+\end{equation}
+
+If your sub/super-script is $>1$ characters long, make sure to enclose it with curly brackets.  Talking about brackets... here's how they work in an equation
+
+\begin{equation}
+x = \left(\sum_{i=1}^n z_i\right)^2
+\end{equation}
+
+Compare to this:
+
+\begin{equation}
+x \neq \sum_{i=1}^n \left(z_i\right)^2
+\end{equation}
+
+You have to use the "left" and "right" commands, to make the auto-sizing work.
+
+Try to do some of this with an integral on x from ... to ...
+
+$$ x \geq \int_{0}^{\infty} g(t)dt $$
+
+Now, some Greek and fractions:
+
+\begin{equation}
+\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i
+\end{equation}
+
+Let's put text \emph{inside} math, like this $x\leq y\mathrm{\ and \ } x \geq z$.
+
+Where's the Greek? You find it. Write an equation E[x] = mu.
+
+$$ E[x] = \mu.$$
+
+Capital Greek, and the probability keyword:
+
+$$ \Pr\left(Z\leq z\right) = \Phi(z) $$
+
+...finally, equation arrays:
+
+\begin{equation}
+\begin{array}{rcl}
+	y & = & \mathbf{X}\beta+\epsilon \\
+	\epsilon & \sim & N\left(0,\sigma^2\right)
+\end{array}
+\end{equation}
+
+
+\end{document}
